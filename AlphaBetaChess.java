@@ -31,6 +31,9 @@ public class AlphaBetaChess {
 	public static void main(String[] args){
 		JFrame f = new JFrame("Chess"); // Title of the window
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Common mistake: http://stackoverflow.com/questions/8058128/jframe-issue-syntax-error-on-token-setdefaultcloseoperation
-		//f.add(ui);
+		UserInterface ui = new UserInterface();
+		f.add(ui); // add UI to the main method
+		f.setSize(500, 500);
+		f.setVisible(true);
 	}
 }
