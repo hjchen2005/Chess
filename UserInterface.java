@@ -16,21 +16,25 @@ public class UserInterface extends JPanel implements MouseListener, MouseMotionL
 		this.setBackground(Color.yellow);
 		this.addMouseListener(this);
 		this.addMouseMotionListener(this);
-		g.setColor(Color.BLUE); // First layer, because it is drawn befre the purple Rect
+		g.setColor(Color.BLUE); // First layer, because it is drawn before the purple Rect
 		g.fillRect(x-20,y-20,40,40);
 		g.setColor(new Color(190,81,225));// Purple
 		g.fillRect(40, 20, 80, 50); // Second layer, on top of the blue one
 		g.drawString("Me", x, y);
 		
 		/***** Image of Pieces insert*******/
-		//InputStream inputImage = new InputStream("src/com/gottaapp/chess/Resource/pieces.png");
-		
 		Image chessPiecesImage = new ImageIcon ("src/com/gottaapp/chess/Resource/pieces.png").getImage();
+		// Scaling the image
 		// Image type for PNG: http://www.coderanch.com/t/343666/GUI/java/bufferedimage-type-transparent-png
+		// First, covert Image to Buffered Image
 		BufferedImage chessPiecesImageBefore = new BufferedImage(chessPiecesImage.getWidth(this),chessPiecesImage.getHeight(this),BufferedImage.TYPE_INT_ARGB);
 		chessPiecesImageBefore = toBufferedImage(chessPiecesImage);
-		//BufferedImage chessPiecesImageResized = new BufferedImage();
-		g.drawImage(chessPiecesImage,x,y,this);
+		// Second, scale the BufferedImage using scale()
+		BufferedImage chessPiecesImageResized = new BufferedImage(chessPiecesImage.getWidth(this),chessPiecesImage.getHeight(this),BufferedImage.TYPE_INT_ARGB);
+		chessPiecesImageResized=scale(chessPiecesImageBefore,BufferedImage.TYPE_INT_RGB,chessPiecesImageBefore.getWidth(),chessPiecesImageBefore.getHeight(),0.5,0.5);
+		
+		/********** Draw Image to UI **********/
+		g.drawImage(chessPiecesImageResized,x,y,this);
 	}
 	@Override
 	public void mouseMoved(MouseEvent e){
@@ -59,7 +63,7 @@ public class UserInterface extends JPanel implements MouseListener, MouseMotionL
 	 * scale image
 	 * 
 	 * @param sbi image to scale
-	 * @param imageType type of image
+	 * @param imageType type; of image
 	 * @param dWidth width of destination image
 	 * @param dHeight height of destination image
 	 * @param fWidth x-factor for transformation / scaling
