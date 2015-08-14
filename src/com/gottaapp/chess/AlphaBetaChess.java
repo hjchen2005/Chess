@@ -3,9 +3,11 @@ package com.gottaapp.chess;
 import java.util.*;
 import javax.swing.*;
 
-public class AlphaBetaChess {
-	
-	static String chessboard[][]={
+public class AlphaBetaChess //implements UserInterface{
+{
+	static String chessboard[][]={ 
+		// lower caps and upper caps represent different sides
+		// a/A represents king
 		{"r","q","b","q","a"," ","k","r"},
 		{"p","p","p","p"," ","p","p","p"},
 		{" "," "," "," "," "," "," "," "},
@@ -35,5 +37,9 @@ public class AlphaBetaChess {
 		f.add(ui); // add UI to the main method
 		f.setSize(500, 500);
 		f.setVisible(true);
+	}
+	
+	public static String possibleMoves(){
+		return "";
 	}
 }

@@ -21,23 +21,24 @@ public class UserInterface extends JPanel implements MouseListener, MouseMotionL
 		g.drawString("Me", x, y);
 		
 		/***** Image of Pieces insert*******/
-		GraphicsEnvironment ge = GraphicsEnvironment .getLocalGraphicsEnvironment();
-	    GraphicsDevice gs = ge.getDefaultScreenDevice();
-		GraphicsConfiguration gc = gs.getDefaultConfiguration();
+		//GraphicsEnvironment ge = GraphicsEnvironment .getLocalGraphicsEnvironment();
+	    //GraphicsDevice gs = ge.getDefaultScreenDevice();
+		//GraphicsConfiguration gc = gs.getDefaultConfiguration();
 		
 		Image chessPiecesImage = new ImageIcon ("src/com/gottaapp/chess/Resource/pieces.png").getImage();
 		// Scaling the image
 		// Image type for PNG: http://www.coderanch.com/t/343666/GUI/java/bufferedimage-type-transparent-png
 		// First, covert Image to Buffered Image
-		BufferedImage chessPiecesImageBefore = new BufferedImage(chessPiecesImage.getWidth(this),chessPiecesImage.getHeight(this),BufferedImage.TYPE_INT_ARGB);
-		chessPiecesImageBefore=gc.createCompatibleImage(chessPiecesImage.getWidth(this), chessPiecesImage.getWidth(this), Transparency.BITMASK); // supports transparent pixels
-		chessPiecesImageBefore = toBufferedImage(chessPiecesImage);
+		//BufferedImage chessPiecesImageBefore = new BufferedImage(chessPiecesImage.getWidth(this),chessPiecesImage.getHeight(this),BufferedImage.TYPE_INT_ARGB);
+		//chessPiecesImageBefore=gc.createCompatibleImage(chessPiecesImage.getWidth(this), chessPiecesImage.getWidth(this), Transparency.BITMASK); // supports transparent pixels
+		//chessPiecesImageBefore = toBufferedImage(chessPiecesImage);
 		// Second, scale the BufferedImage using scale()
-		BufferedImage chessPiecesImageResized = new BufferedImage(chessPiecesImage.getWidth(this),chessPiecesImage.getHeight(this),BufferedImage.TYPE_INT_ARGB);
-		chessPiecesImageResized=scale(chessPiecesImageBefore,BufferedImage.TYPE_INT_RGB,chessPiecesImageBefore.getWidth(),chessPiecesImageBefore.getHeight(),0.5,0.5);
+		//BufferedImage chessPiecesImageResized = new BufferedImage(chessPiecesImage.getWidth(this),chessPiecesImage.getHeight(this),BufferedImage.TYPE_INT_ARGB);
+		//chessPiecesImageResized=scale(chessPiecesImageBefore,BufferedImage.TYPE_INT_RGB,chessPiecesImageBefore.getWidth(),chessPiecesImageBefore.getHeight(),0.5,0.5);
 		
 		/********** Draw Image to UI **********/
-		g.drawImage(chessPiecesImageResized,x,y,this);
+		//g.drawImage(chessPiecesImageResized,x,y,this);
+		g.drawImage(chessPiecesImage, x, y, x+100, y+100,0,0,100,100, this);
 	}
 	@Override
 	public void mouseMoved(MouseEvent e){
